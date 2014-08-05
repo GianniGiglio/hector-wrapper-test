@@ -5,9 +5,13 @@ import org.junit.ClassRule;
 import org.junit.Rule;
 import org.junit.Test;
 
+import com.lordofthejars.nosqlunit.annotation.UsingDataSet;
 import com.lordofthejars.nosqlunit.cassandra.CassandraRule;
 import com.lordofthejars.nosqlunit.cassandra.EmbeddedCassandra;
 import com.lordofthejars.nosqlunit.cassandra.EmbeddedCassandraConfigurationBuilder;
+import com.lordofthejars.nosqlunit.core.LoadStrategyEnum;
+import com.melexis.ape.hector.wrapper.dao.GenericCassandraDao;
+import com.melexis.ape.hector.wrapper.dao.GenericDao;
 
 
 public class BaseITest  {
@@ -16,19 +20,22 @@ public class BaseITest  {
 	public static EmbeddedCassandra embeddedCassandraRule = EmbeddedCassandra.EmbeddedCassandraRuleBuilder.newEmbeddedCassandraRule().build();
 	
 	@Rule
-	public CassandraRule cassandraRule = new CassandraRule( EmbeddedCassandraConfigurationBuilder.newEmbeddedCassandraConfiguration().clusterName("Test Cluster").build());
+	public CassandraRule cassandraRule = new CassandraRule(EmbeddedCassandraConfigurationBuilder.newEmbeddedCassandraConfiguration().clusterName("Test Cluster").build());
 	
-
+	 private GenericDao dao;
+	
 	@Before 
 	public void setup() {
-	
+		 dao = new GenericCassandraDao(cassandraRule.getDatabaseOperation().connectionManager());
 	}
 
    
 	@Test
+	@UsingDataSet(locations = "GenericCassandraDaoITest#entityWithNamedColumns-beforeUpdate.json", loadStrategy = LoadStrategyEnum.CLEAN_INSERT)
 	public void insertAvailability() {
 	//Store availability 
     //key availabityType column date(as long value)
+	//dao.store(availability);
 	}
 	
 	@Test

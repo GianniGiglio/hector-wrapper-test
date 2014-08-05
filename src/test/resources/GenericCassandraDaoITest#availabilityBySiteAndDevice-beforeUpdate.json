@@ -1,0 +1,45 @@
+{
+    "name": "TestApeStatistics",
+    "columnFamilies": [
+        {
+            "name": "AvailabilityByDevice",
+    	    "keyType" : "CompositeType(UTF8Type,UTF8Type,UTF8Type,UTF8Type,UTF8Type)",
+            "defaultColumnValueType": "UTF8Type",
+    		"comparatorType" : "LongType",
+    	    "rows": [
+    	        {
+                    "key": "ieper:PROBER:MLX15202:HALF_HOUR:MACHINE_UP",
+                    "columns": [
+                        { "name" : "1388577600000", "value" : "0.67" },
+                        { "name" : "1388620800000", "value" : "0.72" },
+                        { "name" : "1388664000000", "value" : "0.81" }
+                    ]
+                },
+                {
+                    "key": "ieper:PROBER:MLX15202:HALF_HOUR:MACHINE_DOWN",
+                    "columns": [
+                        { "name" : "1388577600000", "value" : "0.12" },
+                        { "name" : "1388620800000", "value" : "0.16" },
+                        { "name" : "1388664000000", "value" : "0.08" }
+                    ]
+                },
+                {
+                    "key": "ieper:PROBER:MLX15202:HALF_HOUR:MACHINE_WAITING",
+                    "columns": [
+                        { "name" : "1388577600000", "value" : "0.09" },
+                        { "name" : "1388620800000", "value" : "0.04" },
+                        { "name" : "1388664000000", "value" : "0.03" }
+                    ]
+                },
+                {
+                    "key": "ieper:PROBERx:MLX15202:HALF_HOUR:MACHINE_WAITING",
+                    "columns": [
+                        { "name" : "1388577600000", "value" : "0.12" },
+                        { "name" : "1388620800000", "value" : "0.08" },
+                        { "name" : "1388664000000", "value" : "0.07" }
+                    ]
+                }
+            ]
+        }
+    ]
+}
